@@ -1,0 +1,44 @@
+<html lang="en">
+  <head>
+    <title>Hello World in Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ msg }}</h1>
+      <input type="number" v-model="maximal">
+      <input type="button" value="Submit" @click="cek()">
+      <ul>
+        <li v-for="(item, index) in result" ::key="index">{{ item }}</li>
+      </ul>
+    </div>
+    <script>
+      var vue = new Vue({
+        el: '#app',
+        data () {
+          return {
+            maximal: null,
+            result : [],
+            msg: 'Bilangan Fibonacci'
+          }
+        },
+        methods: {
+          cek () {
+            this.result = [];
+            var a = 0
+            var b = 1;
+            var c = a + b;
+            this.result.push(a);
+            this.result.push(b);
+            for( var n = 2;  n < parseFloat(this.maximal);  n++ ) {
+              c = a + b;
+              a = b;
+              b = c;
+              this.result.push(c);
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

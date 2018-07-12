@@ -1,0 +1,47 @@
+<html lang="en">
+  <head>
+    <title>Hello World in Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ msg }}</h1>
+      <input type="number" v-model="maximal">
+      <input type="button" value="Submit" @click="cek()">
+      <ul>
+        <li v-for="(item, index) in result" ::key="index">{{ item }}</li>
+      </ul>
+    </div>
+    <script>
+      var vue = new Vue({
+        el: '#app',
+        data () {
+          return {
+            maximal: null,
+            result1: '',
+            result : [],
+            msg: 'Deret Bilangan'
+          }
+        },
+        methods: {
+          cek () {
+            this.result = [];
+            var bilangan = this.maximal.toString().split('');
+            var length = bilangan.length;
+            debugger;
+            for( var n = 0;  n < bilangan.length;  n++ ) {
+              this.result1 = bilangan[n];
+              length = length - 1;
+              debugger;
+              for( var i = 0; i < length; i++ ){
+                this.result1 += 0;
+              }
+              this.result.push(this.result1);
+            }
+            debugger;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

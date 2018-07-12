@@ -1,0 +1,50 @@
+<html lang="en">
+  <head>
+    <title>Hello World in Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ msg }}</h1>
+      <input type="number" v-model="minimal">
+      <input type="number" v-model="maximal">
+      <input type="button" value="Submit" @click="cek()">
+      <ul>
+        <li v-for="(item, index) in result" ::key="index">{{ item }}</li>
+      </ul>
+    </div>
+    <script>
+      var vue = new Vue({
+        el: '#app',
+        data () {
+          return {
+            minimal: null,
+            maximal: null,
+            result : [],
+            prisma: true,
+            msg: 'Bilangan Prima'
+          }
+        },
+        methods: {
+          cek () {
+            this.result = [];
+            for( var n = parseFloat(this.minimal);  n < parseFloat(this.maximal);  n++ ) {
+              this.prismacek(n);
+              if(this.prisma){
+                this.result.push(n)
+              }
+            }
+          },
+          prismacek(n) {
+            var max = Math.sqrt(n);
+            for( var i = 2;  i <= max;  i++ ) {
+              if( n % i == 0 )
+                return this.prisma = false;
+            }
+            return this.prisma = true;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
